@@ -10,10 +10,22 @@ class BookSysytemTestCase(unittest.TestCase):
         #test that the read_file function correctly reads the file contents
         books = book_system.read_file("books.txt")
         expected_books =  [
-            "J.K. Rowling ~ Harry Potter ~ Fiction ~ 1997",
+            "J.k. Rowling ~ Harry Potter ~ Fiction ~ 1997",
             "George Orwell ~ 1984 ~ Dystopian ~ 1949"
         ]
         self.assertEqual(books, expected_books)
 
-    if __name__ == '__main__':
-        unittest.main()
+    def test_ask_filename(self):
+        #Test that ask_file_name returns filename specified or default filename 
+        self.assertEqual(book_system.ask_file_name(""),'books.txt')
+
+        self.assertEqual(book_system.ask_file_name("custom_file.txt"), "custom_file.txt")
+
+        @patch("book_system.read_file", return_value = ["George Orwell ~ 1984 ~ Dystopian ~ 1949", "J.k. Rowling ~ Harry Potter ~ Fiction ~ 1997"])
+
+
+
+        
+
+if __name__ == '__main__':
+    unittest.main()
